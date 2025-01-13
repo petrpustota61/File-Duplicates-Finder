@@ -1,0 +1,34 @@
+import os
+import hashlib
+
+def calculate_hash(file_path):
+    hasher = hashlib.md5()
+    with open(file_path, 'rb') as f:
+        buf = f.read()
+        hasher.update(buf)
+    return hasher.hexdigest()
+
+def find_duplicates(directory):
+    files_hashes = {}
+    duplicates = []
+
+    for root, _, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            file_hash = calculate_hash(file_path)
+
+            if file_hash in files_hashes:
+                duplicates.append((file_path, files_hashes[file_hash]))
+            else:
+                files_hashes[file_hash] = file_path
+    return duplicates
+
+directory = input("Enter the directory path: ")
+duplicates = find_duplicates(directory)
+
+if duplicates:
+    print("Duplicate files found:")
+    for file1, file2 in duplicates:
+        print(f"{file1} and {file2}")
+else:
+    print("No duplicate files found.")
