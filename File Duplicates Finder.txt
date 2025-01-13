@@ -1,0 +1,18 @@
+# File Duplicates Finder 📂
+
+A script to find duplicate files in a specified directory by comparing their content.
+
+## 📋 Features
+- Detects duplicate files using hash comparison.
+- Supports nested directories.
+
+## 🚀 Quick Start
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/file-duplicates-finder.git
+2.Specify the directory path and run the script:
+python find_duplicates.py
+
+Example Usage:
+Duplicates found:
+File1.txt and File2.txt
